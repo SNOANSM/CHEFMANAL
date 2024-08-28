@@ -149,11 +149,47 @@ text-align: center;
                     </select>
                     <button type="submit">أضف إلى السلة</button>
                     </div>
-                    <div class="cart">
-                        <h2>محتويات السلة:</h2>
-                        <ul id="cartList"></ul>
-                    </div>
                     <br>
+                    <div style="display: inline;" class="card">
+                      <img width="400px" src="kinza-cola.png" alt="">
+                        <h2 id="dish-name">drinks</h2>
+                        <select id="item" name="item" required>
+                            <option value="item3">اختار نوع</option>
+                            <option value="item3">kinza cola كولا</option>
+                            <option value="item3">kinza lemon ليمون</option>
+                            <option value="item3">kinza citrus حمضيات</option>
+                            <option value="item3">kinza orange برتقال</option>
+                            </select>
+                        <button type="submit">أضف إلى السلة</button> </div>
+                        </div>
+                        <div class="cart">
+                          <script>
+                            document.getElementById('shoppingForm').addEventListener('submit', function(event) {
+                                event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+                    
+                                // الحصول على البيانات من النموذج
+                                const name = document.getElementById('name').value.trim();
+                                const item = document.getElementById('item').value;
+                    
+                                // التحقق من وجود الاسم
+                                if (name === '') {
+                                    alert('يرجى إدخال اسمك.');
+                                    return;
+                                }
+                    
+                                // إضافة العنصر إلى السلة
+                                const cartList = document.getElementById('cartList');
+                                const listItem = document.createElement('li');
+                                listItem.textContent = `${name} أضاف ${item} إلى السلة`;
+                                cartList.appendChild(listItem);
+                    
+                                // مسح البيانات من النموذج
+                                document.getElementById('shoppingForm').reset();
+                            });
+                        </script>
+                          <h2 style="color: white;">محتويات السلة:</h2>
+                          <ul id="cartList"></ul>
+                      </div>
                     <script>
                         document.getElementById('shoppingForm').addEventListener('submit', function(event) {
                             event.preventDefault(); // منع الإرسال الافتراضي للنموذج
@@ -178,5 +214,6 @@ text-align: center;
                             document.getElementById('shoppingForm').reset();
                         });
                     </script>
+                    <h1 style="color: aqua;">تم انشاء الموقع من قبل سالم</h1>
   </body>
 </html>

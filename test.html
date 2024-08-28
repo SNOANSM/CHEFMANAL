@@ -1,93 +1,182 @@
 <!DOCTYPE html>
 <html lang="ar">
-    <!DOCTYPE html>
-    <html lang="ar">
-      <head>
-        <link rel="icon" href="chef.webp">
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CHEF MANAL</title>
-        <link rel="stylesheet" href="/style.css" />
-        <style>
-          h1 {
-            color: red;
-            text-align: center;
-          }
-          .flex-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            max-width: 100%;
-            height: auto;
-          }
-          .card {
-    width: 500px; 
-    background-color: #76c893;
-    text-align: center;
+  <head>
+    <link rel="icon" href="chef.webp.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHEF MANAL</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      
+       body {
+        background-image: url(background.png);
+        background-position-x: center;
+        background-attachment: fixed;
+        box-sizing: content-box;
+       }
+      h1 {
+        color: red;
+        text-align: center;
+      }
+      .flex-contain er {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-width: 100%;
+        height: auto;
+      }
+      .card {
+width: 500px; 
+
+text-align: center;
 }
 #dish-name {
-    color: white;
+color: white;
 }
 
 div {
-    text-align: center;
-    
+text-align: center;
 }
-        </style>
-      </head>
-      <body>
-        <div class="flex-container"><img  src="chef.webp" alt="chef"> </div>
-        <h1>CHEF MANAL</h1>
-        <div class="card">
-          <img width="200px" height="200px" src="alfredo.jpg" alt="">
-          <h2 id="dish-name" >ALFREDO</h2>
-          <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
-            + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
-            + TABASCO SAUCE
-          </P>
-          <H3> . </H3>
-          </div>
-          <hr>
-          <div class="card">
-            <img width="200px" src="penne-Arrabbiata.jpg" alt="">
-            <h2 id="dish-name">PENNE ARRABBIATA</h2>
+ /* بعض الأنماط البسيطة */
+ body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .cart {
+        margin-top: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+        document.getElementById('shoppingForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+      
+          // الحصول على البيانات من النموذج
+          const name = document.getElementById('name').value;
+          const item = document.getElementById('item').value;
+      
+          // التحقق من وجود الاسم
+          if (name.trim() === '') {
+            alert('يرجى إدخال اسمك.');
+            return;
+          }
+      
+          // عرض رسالة تأكيد
+          alert(`تمت إضافة ${item} إلى سلة ${name}.`);
+        });
+      </script>
+            
+    <div  class="flex-container"><img  src="chef.webp.png" alt="chef"> 
+      
+    <h1>CHEF MANAL</h1>
+    <form id="shoppingForm">
+      <label for="name">اسمك:</label>
+      <input type="text" id="name" name="name" required>
+    
+
+    
+    </form>
+     <br>
+    <div style="display: inline;" class="card">
+      <img width="500px" height="400px" src="alfredo.jpg" alt="">
+      <h2 id="dish-name" >ALFREDO</h2>
+      <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
+        + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
+        + TABASCO SAUCE
+      </P>
+      <select id="item" name="item" required>
+        <option value="item1">ALFREDO</option>
+        </select>
+      <button type="submit">أضف إلى السلة</button>
+      </div>
+      <br>
+      <div style="display: inline;" class="card">
+        <img width="400px" src="penne-Arrabbiata.jpg" alt="">
+        <h2 id="dish-name">PENNE ARRABBIATA</h2>
+        <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
+          + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
+          + TABASCO SAUCE
+        </P>
+        <select id="item" name="item" required>
+        <option value="item2">PENNE ARRABBIATA</option> 
+        </select>  
+        <button type="submit">أضف إلى السلة</button>
+        </div>
+        <br>
+        <div style="display: inline;" class="card">
+          <img width="400px" src="Pink_Pasta_.jpg" alt="">
+            <h2 id="dish-name">PINK PASTA</h2>
             <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
               + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
               + TABASCO SAUCE
             </P>
-            <H3> . </H3>
+            <select id="item" name="item" required>
+                <option value="item3">PINK PASTA</option>
+                </select>
+            <button type="submit">أضف إلى السلة</button> </div>
             </div>
-            <hr>
-            <div class="card">
-              <img width="200px" src="Pink_Pasta_.jpg" alt="">
-                <h2 id="dish-name">PINK PASTA</h2>
+            <br>
+            <div style="display: inline;" class="card">
+              <img width="400px" src="pesto-pasta.jpg" alt="">
+                <h2 id="dish-name">PESTO</h2>
                 <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
                   + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
                   + TABASCO SAUCE
                 </P>
-                <H3> . </H3> </div>
-                </div>
-                <hr>
-                <div class="card">
-                  <img width="200px" src="pesto-pasta.jpg" alt="">
-                    <h2 id="dish-name">PESTO</h2>
+                <select id="item" name="item" required>
+                    <option value="item4">PESTO</option>
+                    </select>
+                <button type="submit">أضف إلى السلة</button> 
+              </div>
+                <br>
+                <div style="display: inline;" class="card">
+                  <img width="400px" src="mushroo,.jpeg" alt="">
+                    <h2 id="dish-name">MUSHROOM ALFREDOO</h2>
                     <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
                       + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
                       + TABASCO SAUCE
                     </P>
-                    <H3> . </H3> </div>
-                    <HR></HR>
-                    <div class="card">
-                      <img src="mushroo,.jpeg" alt="">
-                        <h2 id="dish-name">MUSHROOM ALFREDOO</h2>
-                        <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
-                          + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
-                          + TABASCO SAUCE
-                        </P>
-                        <H3> . </H3>
-                        </div>
-                    
-      </body>
-    </html>
-    
+                    <select style="display: inline;" id="item" name="item" required>
+                        <option value="item5">MUSHROOM ALFREDOO</option>
+                    </select>
+                    <button type="submit">أضف إلى السلة</button>
+                    </div>
+                    <div class="cart">
+                        <h2>محتويات السلة:</h2>
+                        <ul id="cartList"></ul>
+                    </div>
+                    <br>
+                    <script>
+                        document.getElementById('shoppingForm').addEventListener('submit', function(event) {
+                            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+                
+                            // الحصول على البيانات من النموذج
+                            const name = document.getElementById('name').value.trim();
+                            const item = document.getElementById('item').value;
+                
+                            // التحقق من وجود الاسم
+                            if (name === '') {
+                                alert('يرجى إدخال اسمك.');
+                                return;
+                            }
+                
+                            // إضافة العنصر إلى السلة
+                            const cartList = document.getElementById('cartList');
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `${name} أضاف ${item} إلى السلة`;
+                            cartList.appendChild(listItem);
+                
+                            // مسح البيانات من النموذج
+                            document.getElementById('shoppingForm').reset();
+                        });
+                    </script>
+  </body>
+</html>

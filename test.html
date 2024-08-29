@@ -7,7 +7,19 @@
     <title>CHEF MANAL</title>
     <link rel="stylesheet" href="/style.css" />
     <style>
-      
+      .moving-image {
+        width: 200px;
+        position: relative;
+        animation: moveRight 5s infinite alternate;
+      }
+      @keyframes moveRight {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 100px;
+        }
+      }
        body {
         background-image: url(background.png);
         background-position-x: center;
@@ -74,7 +86,7 @@ text-align: center;
         });
       </script>
             
-    <div  class="flex-container"><img  src="chef.webp.png" alt="chef"> 
+    <div  class="flex-container"><img  src="chef.webp.png" alt="chef" class="moving-image"> 
       
     <h1>CHEF MANAL</h1>
     <form id="shoppingForm">
@@ -124,20 +136,21 @@ text-align: center;
             <button type="submit">أضف إلى السلة</button> </div>
             </div>
             <br>
-            <div style="display: inline;" class="card">
+            <div style="inline-size: auto;" class="card">
               <img width="400px" src="pesto-pasta.jpg" alt="">
                 <h2 id="dish-name">PESTO</h2>
                 <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
                   + GARLIC & CHILLIE OIL = ثوم مع زيت الفلفل الحار
                   + TABASCO SAUCE
                 </P>
+                <br>
                 <select id="item" name="item" required>
                     <option value="item4">PESTO</option>
                     </select>
                 <button type="submit">أضف إلى السلة</button> 
               </div>
                 <br>
-                <div style="display: inline;" class="card">
+                <div style="inline-size: auto;" class="card">
                   <img width="400px" src="mushroo,.jpeg" alt="">
                     <h2 id="dish-name">MUSHROOM ALFREDOO</h2>
                     <P>TOPPING : CHICKIN +PARMESAN +PINE NUTE = صنوبر
@@ -150,70 +163,62 @@ text-align: center;
                     <button type="submit">أضف إلى السلة</button>
                     </div>
                     <br>
-                    <div style="display: inline;" class="card">
+                    <div style="inline-size: auto;" class="card">
                       <img width="400px" src="kinza-cola.png" alt="">
                         <h2 id="dish-name">drinks</h2>
-                        <select id="item" name="item" required>
-                            <option value="item3">اختار نوع</option>
+                        <select id="itemSelect">
+                            <option value="" disabled selected>اختار نوع</option>
                             <option value="item3">kinza cola كولا</option>
                             <option value="item3">kinza lemon ليمون</option>
                             <option value="item3">kinza citrus حمضيات</option>
                             <option value="item3">kinza orange برتقال</option>
                             </select>
-                        <button type="submit">أضف إلى السلة</button> </div>
+                        <button onclick="addItemToCart()">أضف إلى السلة</button> </div>
                         </div>
-                        <div class="cart">
-                          <script>
-                            document.getElementById('shoppingForm').addEventListener('submit', function(event) {
-                                event.preventDefault(); // منع الإرسال الافتراضي للنموذج
-                    
-                                // الحصول على البيانات من النموذج
-                                const name = document.getElementById('name').value.trim();
-                                const item = document.getElementById('item').value;
-                    
-                                // التحقق من وجود الاسم
-                                if (name === '') {
-                                    alert('يرجى إدخال اسمك.');
-                                    return;
-                                }
-                    
-                                // إضافة العنصر إلى السلة
-                                const cartList = document.getElementById('cartList');
-                                const listItem = document.createElement('li');
-                                listItem.textContent = `${name} أضاف ${item} إلى السلة`;
-                                cartList.appendChild(listItem);
-                    
-                                // مسح البيانات من النموذج
-                                document.getElementById('shoppingForm').reset();
-                            });
-                        </script>
-                          <h2 style="color: white;">محتويات السلة:</h2>
-                          <ul id="cartList"></ul>
-                      </div>
-                    <script>
-                        document.getElementById('shoppingForm').addEventListener('submit', function(event) {
-                            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
-                
-                            // الحصول على البيانات من النموذج
-                            const name = document.getElementById('name').value.trim();
-                            const item = document.getElementById('item').value;
-                
-                            // التحقق من وجود الاسم
-                            if (name === '') {
-                                alert('يرجى إدخال اسمك.');
-                                return;
-                            }
-                
-                            // إضافة العنصر إلى السلة
-                            const cartList = document.getElementById('cartList');
-                            const listItem = document.createElement('li');
-                            listItem.textContent = `${name} أضاف ${item} إلى السلة`;
-                            cartList.appendChild(listItem);
-                
-                            // مسح البيانات من النموذج
-                            document.getElementById('shoppingForm').reset();
-                        });
-                    </script>
+                        
+                        <div id="cart"></div>
+                        <script>
+                          // مصفوفة لحفظ العناصر في السلة
+                          let cart = [];
+                  
+                          // دالة لإضافة العناصر إلى السلة
+                          function addItemToCart() {
+                              // الحصول على العنصر المختار
+                              const select = document.getElementById('itemSelect');
+                              const selectedItem = select.value;
+                  
+                              // تحقق من اختيار عنصر
+                              if (!selectedItem) {
+                                  alert('يرجى اختيار عنصر لإضافته إلى السلة');
+                                  return;
+                              }
+                  
+                              // إضافة العنصر إلى السلة
+                              cart.push(selectedItem);
+                  
+                              // تحديث العرض
+                              displayCart();
+                  
+                              // إعادة ضبط الاختيار
+                              select.selectedIndex =  0;
+                          }
+                  
+                          // دالة لعرض محتويات السلة
+                          function displayCart() {
+                              const cartDiv = document.getElementById('cart');
+                              cartDiv.innerHTML = ''; // تفريغ المحتوى السابق
+                  
+                              if (cart.length === 0) {
+                                  cartDiv.innerHTML = 'السلة فارغة';
+                                  return;
+                              }
+                  
+                              // عرض العناصر
+                              cart.forEach((item, index) => {
+                                  cartDiv.innerHTML += <p>${index + 1}. ${item}</p>;
+                              });
+                          }
+                      </script>
                     <h1 style="color: aqua;">تم انشاء الموقع من قبل سالم</h1>
   </body>
 </html>
